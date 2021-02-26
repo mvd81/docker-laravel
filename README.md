@@ -11,3 +11,16 @@ rm -r .git --force
 mkdir src
 ```
 
+## Change docker config.
+Change the docker-compose / dockerfile
+
+## Start Docker
+```docker-compose up -d --build```
+
+## Install laravel
+```composer create-project --prefer-dist laravel/laravel src```
+
+## Update .env
+Update the .env config based on the settings (ports / db credentials) form your docker-compose.yml file.
+
+
