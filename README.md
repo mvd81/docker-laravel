@@ -1,5 +1,5 @@
 # docker-laravel
-My Docker with Laravel starters setup
+My Docker with Laravel starter setup
 
 # How to use this
 
@@ -11,8 +11,8 @@ rm -r .git --force
 mkdir src
 ```
 
-## Change docker config.
-Change the docker-compose / dockerfile
+## Change Docker config.
+Change the docker-compose / dockerfile (update network name, ports, etc)
 
 ## Start Docker
 ```docker-compose up -d --build```
