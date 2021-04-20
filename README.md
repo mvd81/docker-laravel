@@ -1,5 +1,5 @@
 # docker-laravel
-My Docker with Laravel starter setup
+Setup Laravel with Docker-compose
 
 # How to use this
 
