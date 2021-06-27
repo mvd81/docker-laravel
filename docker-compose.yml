@@ -80,3 +80,12 @@ services:
     entrypoint: ['php', '/var/www/html/artisan']
     networks:
       - projectname
+ 
+ redis:
+    image: redis:4.0
+    container_name: app_redis
+    ports:
+      - "6382:6379"
+    networks:
+      - projectname
+      
