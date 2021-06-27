@@ -30,23 +30,23 @@ services:
     networks:
       - projectname
   mysql:
-      image: mysql:5.7.29
-      command: mysqld --sql_mode=""
-      container_name: project_name_mysql
-      restart: always
-      ports:
-        - "3308:3306"
-      environment:
-        MYSQL_DATABASE: laravel_app
-        MYSQL_PASSWORD: secret
-        MYSQL_ROOT_PASSWORD: secret456
-        SERVICE_TAGS: dev
-        SERVICE_NAME: mysql
-      networks:
-        - projectname
-      volumes:
-        - ./sql_scripts:/docker-entrypoint-initdb.d
-        - ./mysql:/var/lib/mysql
+    image: mysql:5.7.29
+    command: mysqld --sql_mode=""
+    container_name: project_name_mysql
+    restart: always
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_DATABASE: laravel_app
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret456
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - projectname
+    volumes:
+      - ./sql_scripts:/docker-entrypoint-initdb.d
+      - ./mysql:/var/lib/mysql
 
   composer:
     image: composer:latest
@@ -80,12 +80,12 @@ services:
     entrypoint: ['php', '/var/www/html/artisan']
     networks:
       - projectname
- 
- redis:
+
+  redis:
     image: redis:4.0
     container_name: app_redis
     ports:
       - "6382:6379"
     networks:
       - projectname
-      
+
