@@ -1,7 +1,7 @@
 # docker-laravel
 Setup Laravel with Docker-compose, with
 
-* nginx
+* Nginx
 * Mysql
 * Node JS
 * Composer
@@ -29,4 +29,7 @@ Change the docker-compose / dockerfile (update network name, ports, etc)
 ## Update .env
 Update the .env config based on the settings (ports / db credentials) form your docker-compose.yml file.
 
+## Installation wizard?
+Use a installation wizard to setup Laravel with Docker.  
+https://github.com/mvd81/new-docker-laravel-project-wizard
 
