@@ -1,5 +1,11 @@
 # docker-laravel
-Setup Laravel with Docker-compose
+Setup Laravel with Docker-compose, with
+
+* nginx
+* Mysql
+* Node JS
+* Composer
+* Redis
 
 # How to use this
 
