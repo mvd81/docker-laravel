@@ -27,9 +27,9 @@ Change the docker-compose / dockerfile (update network name, ports, etc)
 ```composer create-project --prefer-dist laravel/laravel src```
 
 ## Update .env
-Update the .env config based on the settings (ports / db credentials) form your docker-compose.yml file.
+Update the .env config based on the settings (ports / db credentials) from your docker-compose.yml file.
 
 ## Installation wizard?
-Use a installation wizard to setup Laravel with Docker.  
+Use an installation wizard to setup Laravel with Docker.  
 https://github.com/mvd81/new-docker-laravel-project-wizard
 
