@@ -109,6 +109,8 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
   # Remove stubs folder + this installation script.
   # rm ../install.sh
   # rm -r ../stubs
+  # rm -r ../.git
+  # rm ../.gitignore
 
   echo ""
   echo "************** PROJECT INFO ***********************************************************************************"
