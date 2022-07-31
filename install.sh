@@ -75,10 +75,30 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
 
   # Update the .env file
   sed -i "s/localhost/localhost:$nginx_port/" .env
-  sed -i "s/DB_DATABASE=$project_name/DB_DATABASE=$project_name/" .env
+  sed -i "s/DB_DATABASE=laravel/DB_DATABASE=$project_name/" .env
+  sed -i "s/REDIS_HOST=127.0.0.1//" .env
+  sed -i "s/REDIS_PASSWORD=null//" .env
+  sed -i "s/REDIS_PORT=6379//" .env
+
+  echo "CACHE_DRIVER=redis" >> .env
+  echo "REDIS_CLIENT=predis" >> .env
+  echo "REDIS_HOST=redis" >> .env
+  echo "REDIS_PASSWORD=null" >> .env
+  echo "REDIS_PORT=6379" >> .env
+
+  echo "TEST_DB_CONNECTION=mysql" >> .env
+  echo "TEST_DB_HOST=mysql" >> .env
+  echo "test_DB_PORT=3306" >> .env
+  echo "TEST_DB_DATABASE=test_$project_name" >> .env
+  echo "TEST_DB_USERNAME=root" >> .env
+  echo "TEST_DB_PASSWORD=secret456" >> .env
+
+
 
   # Copy the config for Vite.
-  cp stubs/vite.config.js src/vite.config.js
+  cp stubs/vite.config.js vite.config.js
+  cp stubs/config/database.php config/database.php
+  cp stubs/phpunit.xml phpunit.xml
 
   # Remove stubs folder + this installation script.
 
