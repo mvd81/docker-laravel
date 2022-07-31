@@ -64,7 +64,7 @@ fi
 # INSTALL LARAVEL ######################################################################################################
 
 # Startup containers
-#docker-compose up -d --build > /dev/null
+docker-compose up -d --build > /dev/null
 
 read -p "Install the latest Laravel version (yes/no): " install_laravel
 if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
