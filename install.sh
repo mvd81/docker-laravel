@@ -4,6 +4,16 @@ echo ""
 
 # CONFIG ###############################################################################################################
 
+# Rename project
+read -p "Your project name (don't use special chars or spaces): " project_name
+
+if [[ $project_name != "" && $project_name != "" ]]; then
+sed -i "s/project_name/$project_name/" docker-compose.yml
+sed -i "s/projectname/$project_name/" docker-compose.yml
+sed -i "s/laravel_app/$project_name/" docker-compose.yml
+sed -i "s/test_name_db/test_$project_name/" sql_scripts/create_test_db.sql
+fi
+
 # Nginx port
 read -p "A free Ngnix port number (leave empty to use 80 as default): " nginx_port
 if [[ $nginx_port != "" && $nginx_port != "" ]]; then
