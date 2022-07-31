@@ -112,6 +112,9 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
   # rm -r ../.git
   # rm ../.gitignore
 
+  # Clear the readme
+  : > README.md
+
   echo ""
   echo "************** PROJECT INFO ***********************************************************************************"
   echo ""
