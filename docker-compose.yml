@@ -88,15 +88,3 @@ services:
       - "6379:6379"
     networks:
       - projectname
-
-  phpmyadminservice
-  phpmyadmin:
-    image: phpmyadmin
-    restart: always
-    ports:
-      - 8080:80
-    environment:
-      PMA_HOST: mysql
-    networks:
-      - projectname
-  endphpmyadminservice

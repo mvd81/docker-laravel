@@ -4,14 +4,6 @@ echo ""
 
 # CONFIG ###############################################################################################################
 
-# PHPmyadmin
-read -p "Do you want to use PHPmyadmin? If so, give a free port number or leave empty to not to add PHPmyadmin: " phpmyadmin_port
-if [[ $phpmyadmin_port != "" && $phpmyadmin_port != "" ]]; then
-echo "" >> docker-compose.yml
-echo "  phpmyadmin:" >> docker-compose.yml
-echo "    image: phpmyadmin" >> docker-compose.yml
-fi
-
 # Rename project
 read -p "Your project name (don't use special chars or spaces): " project_name
 
@@ -56,11 +48,17 @@ fi
 # PHPmyadmin
 read -p "Do you want to use PHPmyadmin? If so, give a free port number or leave empty to not to add PHPmyadmin: " phpmyadmin_port
 if [[ $phpmyadmin_port != "" && $phpmyadmin_port != "" ]]; then
-sed -i "s/8080:80/$phpmyadmin_port:80/" docker-compose.yml
-sed -i "s/endphpmyadminservice//" docker-compose.yml
-sed -i "s/phpmyadminservice//" docker-compose.yml
-else
-  sed -i "/phpmyadminservice/,/endphpmyadminservice/d" docker-compose.yml
+echo "" >> docker-compose.yml
+echo "" >> docker-compose.yml
+echo "  phpmyadmin:" >> docker-compose.yml
+echo "    image: phpmyadmin" >> docker-compose.yml
+echo "    restart: always" >> docker-compose.yml
+echo "    ports:" >> docker-compose.yml
+echo "      - $phpmyadmin_port:80" >> docker-compose.yml
+echo "    environment:" >> docker-compose.yml
+echo "      PMA_HOST: mysql" >> docker-compose.yml
+echo "    networks:" >> docker-compose.yml
+echo "      - projectname" >> docker-compose.yml
 fi
 
 # INSTALL LARAVEL ######################################################################################################
@@ -119,5 +117,6 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
 
   # Open the browser
   start firefox -new-tab "http://localhost:$nginx_port"
+  start firefox -new-tab "http://localhost:$phpmyadmin_port"
 
 fi
