@@ -108,8 +108,16 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
 
   # Remove stubs folder + this installation script.
 
+  echo ""
+  echo "DB credentials:"
+  echo "User: root"
+  echo "Password: secret456"
+  echo ""
+  echo ""
+
   # NPM info
   echo "************** NPM INFO ***************************************************************************************"
+  echo ""
   echo "Run 'docker-compose run npm to install' the node packages"
   echo "Run 'docker-compose -f docker-compose.yml run --publish $vite_port:$vite_port npm run dev' for js/css development"
   echo "***************************************************************************************************************"
