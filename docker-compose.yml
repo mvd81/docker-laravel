@@ -60,7 +60,7 @@ services:
       - projectname
 
   npm:
-    image: node:12
+    image: node:16
     container_name: project_name_npm
     volumes:
       - ./src:/var/www/html
