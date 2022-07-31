@@ -48,8 +48,8 @@ services:
       - ./sql_scripts:/docker-entrypoint-initdb.d
       - ./mysql:/var/lib/mysql
 
-  test:
-    image: test
+  phpmyadmin:
+    image: phpmyadmin
     restart: always
     ports:
       - 8081:80
@@ -99,14 +99,4 @@ services:
     networks:
       - projectname
 
-  phpmyadminservice
-  phpmyadmin:
-    image: phpmyadmin
-    restart: always
-    ports:
-      - 8080:80
-    environment:
-      PMA_HOST: mysql
-    networks:
-      - projectname
-  endphpmyadminservice
+[phpmyadmin]
