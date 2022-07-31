@@ -109,6 +109,8 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
   # Remove stubs folder + this installation script.
 
   echo ""
+  echo "************** PROJECT INFO ***********************************************************************************"
+  echo ""
   echo "DB credentials:"
   echo "User: root"
   echo "Password: secret456"
@@ -116,7 +118,8 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
   echo ""
 
   # NPM info
-  echo "************** NPM INFO ***************************************************************************************"
+
+  echo "NPM:"
   echo ""
   echo "Run 'docker-compose run npm to install' the node packages"
   echo "Run 'docker-compose -f docker-compose.yml run --publish $vite_port:$vite_port npm run dev' for js/css development"
@@ -140,6 +143,7 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
                 start firefox -new-tab "http://localhost:$phpmyadmin_port"
               fi
               echo "Installation done :)"
+              break
               ;;
           "Yes in Chrome")
               start chrome -new-tab "http://localhost:$nginx_port"
@@ -147,6 +151,7 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
                 start chrome -new-tab "http://localhost:$phpmyadmin_port"
               fi
               echo "Installation done :)"
+              break
               ;;
           *) echo "invalid option $REPLY";;
       esac
