@@ -48,16 +48,6 @@ services:
       - ./sql_scripts:/docker-entrypoint-initdb.d
       - ./mysql:/var/lib/mysql
 
-  test:
-    image: test
-    restart: always
-    ports:
-      - 8081:80
-    environment:
-      PMA_HOST: mysql
-    networks:
-      - projectname
-
   composer:
     image: composer:latest
     container_name: project_name_composer
