@@ -18,6 +18,7 @@ fi
 read -p "A free Ngnix port number (leave empty to use 80 as default): " nginx_port
 if [[ $nginx_port != "" && $nginx_port != "" ]]; then
 sed -i "s/80:80/$nginx_port:80/" docker-compose.yml
+sed -i "s/port: 80/port: $nginx_port/" stubs/vite.config.js
 fi
 
 # PHP port
@@ -38,6 +39,12 @@ if [[ $redis_port != "" && $redis_port != "" ]]; then
 sed -i "s/6379:6379/$redis_port:6379/" docker-compose.yml
 fi
 
+# Vite port
+read -p "A free Vite port number (leave empty to use 5173 as default): " vite_port
+if [[ $vite_port != "" && $vite_port != "" ]]; then
+sed -i "s/port: 5173/port: $vite_port/" stubs/vite.config.js
+fi
+
 # PHPmyadmin
 read -p "Do you want to use PHPmyadmin? If so, give a free port number or leave empty to not to add PHPmyadmin: " phpmyadmin_port
 if [[ $phpmyadmin_port != "" && $phpmyadmin_port != "" ]]; then
@@ -56,17 +63,28 @@ docker-compose up -d --build > /dev/null
 read -p "Install the latest Laravel version (yes/no): " install_laravel
 if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
 
-  mkdir src
+  # make dir 'src' if this dir not exists yet.
+  mkdir -p src
   cd src
 
   echo ""
-  echo "Download and installing the latest Laravel version....may take a while"
+  echo "Download and installing the latest Laravel version....this may take a while so get some coffee"
   echo ""
   docker-compose run composer create-project --prefer-dist laravel/laravel .
   docker-compose run composer composer require predis/predis
 
   # Update the .env file
   sed -i "s/localhost/localhost:$nginx_port/" .env
+  sed -i "s/DB_DATABASE=$project_name/DB_DATABASE=$project_name/" .env
+
+  # Copy the config for Vite.
+  cp stubs/vite.config.js src/vite.config.js
+
+  # Remove stubs folder + this installation script.
+
+  # NPM info
+  echo "Run 'docker-compose run npm to install' the node packages"
+  echo "Run 'docker-compose -f docker-compose.yml run --publish $vite_port:$vite_port npm run dev' for js/css development"
 
   # Open the browser
   start firefox -new-tab "http://localhost:$nginx_port"
