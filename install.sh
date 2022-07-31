@@ -124,8 +124,32 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
   echo "***************************************************************************************************************"
 
 
-  # Open the browser
-  start firefox -new-tab "http://localhost:$nginx_port"
-  start firefox -new-tab "http://localhost:$phpmyadmin_port"
+  # Aks to open the project in the browser
+  PS3='Do you want to open this project in your browser now? '
+  options=("No thanks" "Yes in Firefox" "Yes in Chrome")
+  select opt in "${options[@]}"
+  do
+      case $opt in
+          "No thanks")
+              echo "Installation done :)"
+              break
+              ;;
+          "Yes in Firefox")
+              start firefox -new-tab "http://localhost:$nginx_port"
+              if [[ $phpmyadmin_port != "" && $phpmyadmin_port != "" ]]; then
+                start firefox -new-tab "http://localhost:$phpmyadmin_port"
+              fi
+              echo "Installation done :)"
+              ;;
+          "Yes in Chrome")
+              start chrome -new-tab "http://localhost:$nginx_port"
+               if [[ $phpmyadmin_port != "" && $phpmyadmin_port != "" ]]; then
+                start chrome -new-tab "http://localhost:$phpmyadmin_port"
+              fi
+              echo "Installation done :)"
+              ;;
+          *) echo "invalid option $REPLY";;
+      esac
+  done
 
 fi
