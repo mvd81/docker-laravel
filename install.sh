@@ -101,19 +101,23 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
   echo "TEST_DB_USERNAME=root" >> .env
   echo "TEST_DB_PASSWORD=secret456" >> .env
 
-  # Copy the config for Vite.
+  # Copy the changed config stubs.
   cp ../stubs/vite.config.js vite.config.js
   cp ../stubs/config/database.php config/database.php
   cp ../stubs/phpunit.xml phpunit.xml
 
   # Remove stubs folder + this installation script.
+  # rm ../install.sh
+  # rm -r ../stubs
 
   echo ""
   echo "************** PROJECT INFO ***********************************************************************************"
   echo ""
   echo "DB credentials:"
+  echo "Host: localhost"
   echo "User: root"
   echo "Password: secret456"
+  echo "Port: $mysql_port"
   echo ""
   echo ""
 
