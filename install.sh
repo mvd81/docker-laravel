@@ -58,7 +58,7 @@ echo "      - $phpmyadmin_port:80" >> docker-compose.yml
 echo "    environment:" >> docker-compose.yml
 echo "      PMA_HOST: mysql" >> docker-compose.yml
 echo "    networks:" >> docker-compose.yml
-echo "      - projectname" >> docker-compose.yml
+echo "      - $project_name" >> docker-compose.yml
 fi
 
 # INSTALL LARAVEL ######################################################################################################
