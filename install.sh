@@ -4,6 +4,14 @@ echo ""
 
 # CONFIG ###############################################################################################################
 
+# PHPmyadmin
+read -p "Do you want to use PHPmyadmin? If so, give a free port number or leave empty to not to add PHPmyadmin: " phpmyadmin_port
+if [[ $phpmyadmin_port != "" && $phpmyadmin_port != "" ]]; then
+echo "" >> docker-compose.yml
+echo "  phpmyadmin:" >> docker-compose.yml
+echo "    image: phpmyadmin" >> docker-compose.yml
+fi
+
 # Rename project
 read -p "Your project name (don't use special chars or spaces): " project_name
 
@@ -58,7 +66,7 @@ fi
 # INSTALL LARAVEL ######################################################################################################
 
 # Startup containers
-docker-compose up -d --build > /dev/null
+#docker-compose up -d --build > /dev/null
 
 read -p "Install the latest Laravel version (yes/no): " install_laravel
 if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
