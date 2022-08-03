@@ -26,11 +26,11 @@ Go with the CLI to this folder
 
 # Screenshots
 
-<img src="stubs/wizard-1.png" width="" />]
+#### Screenshot 1
+<img src="stubs/wizard-1.png" width="" />
 
-----
-
-<img src="stubs/wizard-2.png" width="" />]
+#### Screenshot 2
+<img src="stubs/wizard-2.png" width="" />
 
 -----
 
