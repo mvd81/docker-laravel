@@ -1,35 +1,57 @@
-# docker-laravel
-Setup Laravel with Docker-compose, with
+# Docker Laravel
+
+This repo will help you to setup a fresh docker-compose file and it will install the latest version of Laravel with the help of an installation (shellscript) wizard.  
+What it wil do:
+* The wizard will ask you some questions and will generate the docker-compose file for you
+* Installation of the latest Laravel version
+* Update the .env file from the wizard answers
+* Add config for Vite
+* Starting the Docker containers
+* Shows you info to use vite + database credentials
+* Ask if you want to open the project in your browser (Chrome/Firefox)
+* Removes the .git directory, installation stubs and installation wizard
+
+----
+
+# Usage
+
+Create a directory where you want to use this Docker project.  
+Go with the CLI to this folder
+
+* Clone this repo: ```git clone git@github.com:mvd81/docker-laravel.git .```
+* Run the installation wizard: ```sh install.sh```
+
+-----
+
+# Docker-compose containers
 
 * Nginx
 * Mysql
 * Node JS
 * Composer
 * Redis
+* PHPmyadmin (optional)
 
-# How to use this
+----
 
-Create a directory where you want to use this Docker project.  
-Go with the CLI to this folder.  
-```
-git clone git@github.com:mvd81/docker-laravel.git .
-rm -r .git --force
-mkdir src
-```
+# Next feature
 
-## Change Docker config.
-Change the docker-compose / dockerfile (update network name, ports, etc)
+Add an option in the installation wizard to install / setup 
+* Tailwind
+* Vue js
+* Alphine js
 
-## Start Docker
-```docker-compose up -d --build```
+----
 
-## Install laravel
-```composer create-project --prefer-dist laravel/laravel src```
+# Changelog
 
-## Update .env
-Update the .env config based on the settings (ports / db credentials) from your docker-compose.yml file.
+## [v2.0] - 2022-08-03
 
-## Installation wizard?
-Use an installation wizard to setup Laravel with Docker.  
-https://github.com/mvd81/new-docker-laravel-project-wizard
+* Add an installation wizard which makes it even easier to setup a Laravel project with Docker (you don't have to change the docker-compose file, run the command to install Laravel, startup te container and your browser)
+* Update docker-compose for the latest Laravel installation
+* Config for Vite
+* Add the function (optional) to add PHPmyadmin
+
+## [v1.0] - 2022-03-02
+* docker-compose template file
 
