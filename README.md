@@ -11,6 +11,14 @@ What it wil do:
 * Ask if you want to open the project in your browser (Chrome/Firefox)
 * Removes the .git directory, installation stubs and installation wizard
 
+### Screenshots
+
+<img src="stubs/wizard-1.png" width="" />]
+
+
+
+
+
 ----
 
 # Usage
@@ -39,7 +47,7 @@ Go with the CLI to this folder
 Add an option in the installation wizard to install / setup 
 * Tailwind
 * Vue js
-* Alphine js
+* Alpine js
 
 ----
 

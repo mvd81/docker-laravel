@@ -128,10 +128,9 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
 
   # NPM info
 
-  echo "NPM:"
-  echo ""
-  echo "Run 'docker-compose run npm to install' the node packages"
-  echo "Run 'docker-compose -f docker-compose.yml run --publish $vite_port:$vite_port npm run dev' for js/css development"
+  echo "Vite:"
+  echo "Run 'docker-compose run npm install' to install the node packages"
+  echo "Run 'docker-compose -f docker-compose.yml run --publish $vite_port:$vite_port npm run dev' to startup Vite"
   echo ""
   echo "***************************************************************************************************************"
 
