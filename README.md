@@ -37,6 +37,7 @@ Go with the CLI to this folder
 # Docker-compose containers
 
 * Nginx
+* PHP
 * Mysql
 * Node JS
 * Composer
