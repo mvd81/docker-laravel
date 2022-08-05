@@ -27,10 +27,10 @@ Go to CLI into this directory.
 # Screenshots
 
 #### Screenshot 1
-<img src="stubs/wizard-1.png" width="" />
+<img alt="Installation wizard" src="stubs/wizard-1.png" width="" />
 
 #### Screenshot 2
-<img src="stubs/wizard-2.png" width="" />
+<img alt="Project information after the installation" src="stubs/wizard-2.png" width="" />
 
 -----
 
