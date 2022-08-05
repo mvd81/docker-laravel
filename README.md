@@ -18,7 +18,7 @@ What it will do:
 # Usage
 
 Create a directory where you want to use this Docker Laravel project.  
-Go to CLI into this directory.
+Go with the CLI into this directory.
 
 * Clone this repo: ```git clone git@github.com:mvd81/docker-laravel.git .```
 * Run the installation wizard: ```sh install.sh```
