@@ -7,7 +7,7 @@ What it will do:
 * Update the .env file from the wizard answers
 * Add config for Vite
 * Starting the Docker containers
-* Shows you info how to use vite + the database credentials
+* Shows you information how to use Vite in development + the database credentials
 * Ask if you want to open the project in your browser (Chrome / Firefox)
 * Removes the .git directory, installation stubs and installation wizard
 
