@@ -107,10 +107,10 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
   cp ../stubs/phpunit.xml phpunit.xml
 
   # Remove stubs folder + this installation script.
-  # rm ../install.sh
-  # rm -r ../stubs
-  # rm -r ../.git
-  # rm ../.gitignore
+   rm ../install.sh
+   rm -r ../stubs
+   rm -r ../.git
+   rm ../.gitignore
 
   # Clear the readme
   : > README.md

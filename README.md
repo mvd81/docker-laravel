@@ -1,7 +1,7 @@
 # Docker Laravel
 
-This repo will help you to setup a fresh docker-compose file and it will install the latest version of Laravel with the help of an installation (shellscript) wizard.  
-What it wil do:
+This repo will help you to setup a fresh docker-compose file and it will install the latest version of Laravel with the help of an installation (shell script) wizard.  
+What it will do:
 * The wizard will ask you some questions and will generate the docker-compose file for you
 * Installation of the latest Laravel version
 * Update the .env file from the wizard answers
@@ -16,7 +16,7 @@ What it wil do:
 # Usage
 
 Create a directory where you want to use this Docker project.  
-Go with the CLI to this folder
+Go to CLI into this directory.
 
 * Clone this repo: ```git clone git@github.com:mvd81/docker-laravel.git .```
 * Run the installation wizard: ```sh install.sh```
@@ -59,7 +59,7 @@ Add an option in the installation wizard to install / setup
 
 ## [v2.0] - 2022-08-03
 
-* Add an installation wizard which makes it even easier to setup a Laravel project with Docker (you don't have to manually change the docker-compose file, run the command to install Laravel, start te containers and open the project in your browser)
+* Add an installation wizard, which makes it even easier to setup a Laravel project with Docker (you don't have to manually change the docker-compose file, run the command to install Laravel, start the containers and open the project in your browser)
 * Update docker-compose for the latest Laravel installation
 * Config for Vite
 * Add the function (optional) to add PHPmyadmin
