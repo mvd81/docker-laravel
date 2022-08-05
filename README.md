@@ -1,5 +1,7 @@
 # Docker Laravel
 
+<img alt="header image" src="stubs/docker-laravel-header.png" width="" />
+
 This repo will help you to setup a fresh docker-compose file and it will install the latest version of Laravel with the help of an installation (shell script) wizard.  
 What it will do:
 * The wizard will ask you some questions and will generate the docker-compose file for you
