@@ -43,6 +43,7 @@ fi
 read -p "A free Vite port number (leave empty to use 5173 as default): " vite_port
 if [[ $vite_port != "" && $vite_port != "" ]]; then
 sed -i "s/port: 5173/port: $vite_port/" stubs/vite.config.js
+sed -i "s/port: 5173/port: $vite_port/" stubs/vite_vue.config.js
 fi
 
 # PHPmyadmin
@@ -106,6 +107,40 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
   cp ../stubs/config/database.php config/database.php
   cp ../stubs/phpunit.xml phpunit.xml
 
+ # Install some assets
+  PS3='Do you want install some bundle assets? '
+  options=("No thanks" "Yes, Vue" "Yes, Vue + Tailwind", "Yes, Vue + Tailwind + Alpinejs")
+  select opt in "${options[@]}"
+  do
+      case $opt in
+          "No thanks")
+              break
+              ;;
+          "Yes, Vue")
+              echo "One moment, downloading the NPM package + create config file"
+              docker-compose run npm i @vitejs/plugin-vue
+              cp ../stubs/vite_vue.config.js vite.config.js
+              cp ../stubs/app_vue.js resources/js/app.js
+              cp ../stubs/App.vue resources/js/App.vue
+              cp ../stubs/vite_vue.php resources/views/vite_vue.php
+              echo "Check 'src/resources/views/vite_vue.php' how load JS and CSS with Vite in Blade"
+              break
+              ;;
+          "Yes, Vue + Tailwind")
+
+              echo "One moment, downloading the NPM packages + create config file"
+
+              break
+             ;;
+          "Yes, Vue + Tailwind + Alpinejs")
+
+              echo "One moment, downloading the NPM packages + create config file"
+              break
+              ;;
+          *) echo "invalid option $REPLY";;
+      esac
+  done
+
   # Remove stubs folder + this installation script.
    rm -f ../install.sh
    rm -rf ../stubs
@@ -129,11 +164,9 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
   # NPM info
 
   echo "Vite:"
-  echo "Run 'docker-compose run npm install' to install the node packages"
   echo "Run 'docker-compose -f docker-compose.yml run --publish $vite_port:$vite_port npm run dev' to run Vite in development"
   echo ""
   echo "***************************************************************************************************************"
-
 
   # Aks to open the project in the browser
   PS3='Do you want to open this project in your browser now? '
@@ -164,5 +197,7 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
           *) echo "invalid option $REPLY";;
       esac
   done
+
+
 
 fi
