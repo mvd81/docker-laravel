@@ -62,10 +62,11 @@ echo "    networks:" >> docker-compose.yml
 echo "      - $project_name" >> docker-compose.yml
 fi
 
-# INSTALL LARAVEL ######################################################################################################
-
 # Startup containers
+echo "Starting the containers..."
 docker-compose up -d --build > /dev/null
+
+# INSTALL LARAVEL ######################################################################################################
 
 read -p "Install the latest Laravel version (yes/no): " install_laravel
 if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
@@ -109,7 +110,7 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
 
  # Install some assets
   PS3='Do you want install some bundle assets? '
-  options=("No thanks" "Yes, Vue" "Yes, Vue + Tailwind", "Yes, Vue + Tailwind + Alpinejs")
+  options=("No thanks" "Yes, Vue" "Yes, Vue + Tailwind" "Yes, Vue + Tailwind + Alpinejs")
   select opt in "${options[@]}"
   do
       case $opt in
@@ -117,24 +118,64 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
               break
               ;;
           "Yes, Vue")
-              echo "One moment, downloading the NPM package + create config file"
+
+              echo ""
+              echo "One moment, downloading the NPM package + creating config file"
+              echo ""
               docker-compose run npm i @vitejs/plugin-vue
               cp ../stubs/vite_vue.config.js vite.config.js
               cp ../stubs/app_vue.js resources/js/app.js
               cp ../stubs/App.vue resources/js/App.vue
-              cp ../stubs/vite_vue.php resources/views/vite_vue.php
-              echo "Check 'src/resources/views/vite_vue.php' how load JS and CSS with Vite in Blade"
+              cp ../stubs/vite.blade.php resources/views/vite.blade.php
+              echo "Check 'src/resources/views/vite.blade.php' how load JS and CSS with Vite in Blade"
               break
               ;;
           "Yes, Vue + Tailwind")
 
-              echo "One moment, downloading the NPM packages + create config file"
+              echo ""
+              echo "One moment, downloading the NPM packages + creating config file"
+              echo ""
+              docker-compose run npm i @vitejs/plugin-vue
+              docker-compose run npm install -D tailwindcss postcss autoprefixer
+              cp ../stubs/vite_vue.config.js vite.config.js
+              cp ../stubs/app_vue.js resources/js/app.js
+              cp ../stubs/tailwind.css resources/css/app.css
+              cp ../stubs/tailwind.config.js tailwind.config.js
+              cp ../stubs/postcss.config.js postcss.config.js
+              cp ../stubs/App.vue resources/js/App.vue
+
+              # Copy example over welcome.blade.php
+              cp resources/views/welcome.blade.php resources/views/welcome.blade.php.bak
+              cp ../stubs/vite_tailwind.blade.php resources/views/welcome.blade.php
+
+              # Compile assets
+              docker-compose -f ../docker-compose.yml run --publish $vite_port:$vite_port npm run build
 
               break
              ;;
           "Yes, Vue + Tailwind + Alpinejs")
 
-              echo "One moment, downloading the NPM packages + create config file"
+              echo ""
+              echo "One moment, downloading the NPM packages + creating config file"
+              echo ""
+              docker-compose run npm i @vitejs/plugin-vue
+              docker-compose run npm install -D tailwindcss postcss autoprefixer
+              docker-compose run npm i alpinejs
+
+              cp ../stubs/vite_vue.config.js vite.config.js
+              cp ../stubs/app_vue_alpine.js resources/js/app.js
+              cp ../stubs/tailwind.css resources/css/app.css
+              cp ../stubs/tailwind.config.js tailwind.config.js
+              cp ../stubs/postcss.config.js postcss.config.js
+              cp ../stubs/App.vue resources/js/App.vue
+
+              # Copy example over welcome.blade.php
+              cp resources/views/welcome.blade.php resources/views/welcome.blade.php.bak
+              cp ../stubs/vite_tailwind_alpine.blade.php resources/views/welcome.blade.php
+
+              # Compile assets
+              docker-compose -f ../docker-compose.yml run --publish $vite_port:$vite_port npm run build
+
               break
               ;;
           *) echo "invalid option $REPLY";;
@@ -142,10 +183,10 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
   done
 
   # Remove stubs folder + this installation script.
-   rm -f ../install.sh
-   rm -rf ../stubs
-   rm -rf ../.git
-   rm -f ../.gitignore
+  rm -f ../install.sh
+  rm -rf ../stubs
+  rm -rf ../.git
+  rm -f ../.gitignore
 
   # Clear the readme
   : > README.md
@@ -165,6 +206,7 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
 
   echo "Vite:"
   echo "Run 'docker-compose -f docker-compose.yml run --publish $vite_port:$vite_port npm run dev' to run Vite in development"
+  echo "Check 'src/resources/views/vite.php' how load JS and CSS with Vite in Blade"
   echo ""
   echo "***************************************************************************************************************"
 
@@ -198,6 +240,17 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
       esac
   done
 
+else
 
+  # Remove stubs folder + this installation script.
+  rm -f ../install.sh
+  rm -rf ../stubs
+  rm -rf ../.git
+  rm -f ../.gitignore
+
+  # Clear the readme
+  : > README.md
+  echo "Docker files created"
+  echo "Project in the browser: http://localhost:$nginx_port"
 
 fi

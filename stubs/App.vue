@@ -1,5 +1,5 @@
 <template>
-    <p>App Component</p>
+    <p>Vue JS App Component</p>
     <p>{{ test }}</p>
 </template>
 
@@ -8,7 +8,7 @@ export default {
 
     data() {
         return {
-            'test' : 'Variable from data()'
+            'test' : 'This is a test variable'
         }
     }
 }

@@ -11,16 +11,9 @@
 
         @vite('resources/css/app.css')
 
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
     </head>
     <body class="antialiased">
 
-        <div id="app"></div>
-
-    @vite('resources/js/app.js')
+        @vite('resources/js/app.js')
     </body>
 </html>

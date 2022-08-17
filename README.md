@@ -2,16 +2,17 @@
 
 <img alt="header image" src="stubs/docker-laravel-header.png" width="" />
 
-This repo will help you to setup a fresh docker-compose file and it will install the latest version of Laravel with the help of an installation (shell script) wizard.  
+This repo will help you to setup a Docker project and it will (optionally) install the latest version of Laravel with the help of an installation (shell script) wizard.  
 What it will do:
-* The wizard will ask you some questions and will generate the docker-compose file for you
-* Installation of the latest Laravel version
-* Update the .env file from the wizard answers
-* Add config for Vite
+* The wizard will ask you some questions and then it will generate the Docker files for you
 * Starting the Docker containers
-* Shows you information how to use Vite in development + the database credentials
-* Ask if you want to open the project in your browser (Chrome / Firefox)
-* Removes the .git directory, installation stubs and installation wizard
+* Installation of the latest Laravel version (optional)
+* * Update the .env file from the wizard answers
+* * Add config for Vite
+* * Ask if you want to install assets (Vue JS / Tailwind / AlpineJS) + the setup config files for them + a blade demo file
+* * Shows you information how to use Vite for development + the database credentials information
+* * Ask if you want to open the project in your browser (Chrome / Firefox)
+* Removes the .git directory, .gitignore, installation stubs and installation wizard
 
 ----
 
@@ -28,10 +29,13 @@ Go with the CLI into this directory.
 
 # Screenshots
 
-#### Screenshot 1
+#### Port config
 <img alt="Installation wizard" src="stubs/wizard-1.png" width="" />
 
-#### Screenshot 2
+#### Asset installation
+<img alt="Asset installation" src="stubs/wizard-3.png" width="" />
+
+#### Project information after the installation
 <img alt="Project information after the installation" src="stubs/wizard-2.png" width="" />
 
 -----
@@ -48,16 +52,11 @@ Go with the CLI into this directory.
 
 ----
 
-# Next feature
-
-Add an option in the installation wizard to install / setup 
-* Tailwind
-* Vue js
-* Alpine js
-
-----
-
 # Changelog
+
+## [v2.1] - 2022-08-12
+
+* Add option to install assets (Vue JS / Tailwind / AlpineJS) 
 
 ## [v2.0] - 2022-08-03
 
