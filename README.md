@@ -9,7 +9,7 @@ What it will do:
 * Installation of the latest Laravel version (optional)
 * * Update the .env file from the wizard answers
 * * Add config for Vite
-* * Ask if you want to install assets (Vue JS / Tailwind / AlpineJS) + the setup config files for them + a blade demo file
+* * Ask if you want to install assets (VueJS / Tailwind / AlpineJS) + the setup config files for them + a blade demo file
 * * Shows you information how to use Vite for development + the database credentials information
 * * Ask if you want to open the project in your browser (Chrome / Firefox)
 * Removes the .git directory, .gitignore, installation stubs and installation wizard
@@ -54,7 +54,7 @@ Go with the CLI into this directory.
 
 # Changelog
 
-## [v2.1] - 2022-08-12
+## [v2.1] - 2022-08-17
 
 * Add option to install assets (Vue JS / Tailwind / AlpineJS) 
 
