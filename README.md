@@ -68,3 +68,8 @@ Go with the CLI into this directory.
 ## [v1.0] - 2022-03-02
 * docker-compose template file
 
+
+
+### Infrastructure model
+
+![Infrastructure model](.infragenie/infrastructure_model.png)
