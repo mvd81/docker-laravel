@@ -54,6 +54,11 @@ Go with the CLI into this directory.
 
 # Changelog
 
+## [v2.2] - 2022-10-20
+
+* Fix .env settings (correct settings for DB_HOST and DB_PASSWORD)
+* Fix when removing the .git directory, .gitignore, installation stubs and installation wizard when you don't want to install Laravel (wrong path)
+
 ## [v2.1] - 2022-08-17
 
 * Add option to install assets (Vue JS / Tailwind / AlpineJS) 

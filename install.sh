@@ -84,6 +84,8 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
   # Update the .env file
   sed -i "s/localhost/localhost:$nginx_port/" .env
   sed -i "s/DB_DATABASE=laravel/DB_DATABASE=$project_name/" .env
+  sed -i "s/DB_HOST=127.0.0.1/DB_HOST=mysql/" .env
+  sed -i "s/DB_PASSWORD=/DB_PASSWORD=secret456/" .env
   sed -i "/REDIS_HOST=127.0.0.1/d" .env
   sed -i "/REDIS_PASSWORD=null/d" .env
   sed -i "/REDIS_PORT=6379/d" .env
@@ -243,10 +245,10 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
 else
 
   # Remove stubs folder + this installation script.
-  rm -f ../install.sh
-  rm -rf ../stubs
-  rm -rf ../.git
-  rm -f ../.gitignore
+  rm -f install.sh
+  rm -rf stubs
+  rm -rf .git
+  rm -f .gitignore
 
   # Clear the readme
   : > README.md
