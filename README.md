@@ -54,6 +54,9 @@ Go with the CLI into this directory.
 
 # Changelog
 
+## [v2.2] - 2022-11-24
+* Create a user in the Docker file to prevent write permission errors (on Linux)
+
 ## [v2.2] - 2022-10-20
 
 * Fix .env settings (correct settings for DB_HOST and DB_PASSWORD)
