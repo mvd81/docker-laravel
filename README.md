@@ -56,6 +56,7 @@ Go with the CLI into this directory.
 
 ## [v2.3] - 2022-11-24
 * Create a user in the Docker file to prevent write permission errors (on Linux)
+* Fixes in the installation wizard (for Linux )
 
 ## [v2.2] - 2022-10-20
 

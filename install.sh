@@ -7,7 +7,7 @@ echo ""
 # Rename project
 read -p "Your project name (don't use special chars or spaces): " project_name
 
-if [[ $project_name != "" && $project_name != "" ]]; then
+if [ $project_name != "" -a $project_name != "" ]; then
 sed -i "s/project_name/$project_name/" docker-compose.yml
 sed -i "s/projectname/$project_name/" docker-compose.yml
 sed -i "s/laravel_app/$project_name/" docker-compose.yml
@@ -16,39 +16,39 @@ fi
 
 # Nginx port
 read -p "A free Ngnix port number (leave empty to use 80 as default): " nginx_port
-if [[ $nginx_port != "" && $nginx_port != "" ]]; then
+if [ $nginx_port != "" -a $nginx_port != "" ]; then
 sed -i "s/80:80/$nginx_port:80/" docker-compose.yml
 sed -i "s/port: 80/port: $nginx_port/" stubs/vite.config.js
 fi
 
 # PHP port
 read -p "A free PHP port number (leave empty to use 9000 as default): " php_port
-if [[ $php_port != "" && $php_port != "" ]]; then
+if [ $php_port != "" -a $php_port != "" ]; then
 sed -i "s/9000:9000/$php_port:9000/" docker-compose.yml
 fi
 
 # Mysql port
 read -p "A free Mysql port number (leave empty to use 3306 as default): " mysql_port
-if [[ $mysql_port != "" && $mysql_port != "" ]]; then
+if [ $mysql_port != "" -a $mysql_port != "" ]; then
 sed -i "s/3306:3306/$mysql_port:3306/" docker-compose.yml
 fi
 
 # Redis port
 read -p "A free Redis port number (leave empty to use 6379 as default): " redis_port
-if [[ $redis_port != "" && $redis_port != "" ]]; then
+if [ $redis_port != "" -a $redis_port != "" ]; then
 sed -i "s/6379:6379/$redis_port:6379/" docker-compose.yml
 fi
 
 # Vite port
 read -p "A free Vite port number (leave empty to use 5173 as default): " vite_port
-if [[ $vite_port != "" && $vite_port != "" ]]; then
+if [ $vite_port != "" -a $vite_port != "" ]; then
 sed -i "s/port: 5173/port: $vite_port/" stubs/vite.config.js
 sed -i "s/port: 5173/port: $vite_port/" stubs/vite_vue.config.js
 fi
 
 # PHPmyadmin
 read -p "Do you want to use PHPmyadmin? If so, give a free port number or leave empty to not to add PHPmyadmin: " phpmyadmin_port
-if [[ $phpmyadmin_port != "" && $phpmyadmin_port != "" ]]; then
+if [ $phpmyadmin_port != "" -a $phpmyadmin_port != "" ]; then
 echo "" >> docker-compose.yml
 echo "" >> docker-compose.yml
 echo "  phpmyadmin:" >> docker-compose.yml
@@ -69,7 +69,7 @@ docker-compose up -d --build > /dev/null
 # INSTALL LARAVEL ######################################################################################################
 
 read -p "Install the latest Laravel version (yes/no): " install_laravel
-if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
+if [ $install_laravel != "" -a $install_laravel == "yes" ]; then
 
   # make dir 'src' if this dir not exists yet.
   mkdir -p src
@@ -224,7 +224,7 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
               ;;
           "Yes in Firefox")
               start firefox -new-tab "http://localhost:$nginx_port"
-              if [[ $phpmyadmin_port != "" && $phpmyadmin_port != "" ]]; then
+              if [ $phpmyadmin_port != "" -a $phpmyadmin_port != "" ]; then
                 start firefox -new-tab "http://localhost:$phpmyadmin_port"
               fi
               echo "Installation done :)"
@@ -232,7 +232,7 @@ if [[ $install_laravel != "" && $install_laravel == "yes" ]]; then
               ;;
           "Yes in Chrome")
               start chrome -new-tab "http://localhost:$nginx_port"
-               if [[ $phpmyadmin_port != "" && $phpmyadmin_port != "" ]]; then
+               if [ $phpmyadmin_port != "" -a $phpmyadmin_port != "" ]; then
                 start chrome -new-tab "http://localhost:$phpmyadmin_port"
               fi
               echo "Installation done :)"
