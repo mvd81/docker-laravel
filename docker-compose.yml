@@ -50,6 +50,7 @@ services:
 
   composer:
     image: composer:latest
+    user: "1000:1000"
     container_name: project_name_composer
     volumes:
       - ./src:/var/www/html
@@ -62,6 +63,7 @@ services:
   npm:
     image: node:16
     container_name: project_name_npm
+    user: "1000:1000"
     volumes:
       - ./src:/var/www/html
     working_dir: /var/www/html

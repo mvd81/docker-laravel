@@ -22,7 +22,8 @@ Create a directory where you want to use this Docker Laravel project.
 Go with the CLI into this directory.
 
 * Clone this repo: ```git clone git@github.com:mvd81/docker-laravel.git .```
-* Run the installation wizard: ```sh install.sh```
+* Make the 'src' direcory: ```mkdir src```
+* Run the installation wizard: ```bash install.sh```
 
 
 ----
@@ -54,9 +55,11 @@ Go with the CLI into this directory.
 
 # Changelog
 
-## [v2.3] - 2022-11-24
-* Create a user in the Docker file to prevent write permission errors (on Linux)
-* Fixes in the installation wizard (for Linux )
+## [v2.3] - 2022-11-25
+Fixes for Linux:
+* Create a user in the Docker file to prevent creating new files as root user
+* Changes in the installation wizard
+* Don't run composer as root user
 
 ## [v2.2] - 2022-10-20
 

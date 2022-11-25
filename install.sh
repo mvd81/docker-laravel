@@ -1,6 +1,15 @@
+#!/bin/bash
 echo""
 echo "Welcome to the Docker Laravel installation"
 echo ""
+
+RED='\033[0;31m'
+
+# Check if the src folder exists, if we create the dir in this script with 'mkdir' the folder has root permission
+if [ ! -d "./src" ]; then
+  echo -e "${RED}src directory does not exist, create this directory first: mkdir src"
+  exit 1;
+fi
 
 # CONFIG ###############################################################################################################
 
@@ -69,10 +78,8 @@ docker-compose up -d --build > /dev/null
 # INSTALL LARAVEL ######################################################################################################
 
 read -p "Install the latest Laravel version (yes/no): " install_laravel
-if [ $install_laravel != "" -a $install_laravel == "yes" ]; then
+if [ $install_laravel != "" -a $install_laravel = "yes" -o $install_laravel = "y"  ]; then
 
-  # make dir 'src' if this dir not exists yet.
-  mkdir -p src
   cd src
 
   echo ""
@@ -110,7 +117,7 @@ if [ $install_laravel != "" -a $install_laravel == "yes" ]; then
   cp ../stubs/config/database.php config/database.php
   cp ../stubs/phpunit.xml phpunit.xml
 
- # Install some assets
+  # Install some assets
   PS3='Do you want install some bundle assets? '
   options=("No thanks" "Yes, Vue" "Yes, Vue + Tailwind" "Yes, Vue + Tailwind + Alpinejs")
   select opt in "${options[@]}"
